@@ -1,12 +1,21 @@
 {
   "name": "shunter-whoami",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Simple docker image to test shunter's routing",
-  "author": "Sgobbi Federico <federico@sgobbi.it>",
+  "author": {
+    "name": "Sgobbi Federico",
+    "email": "federico@sgobbi.it"
+  },
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js",
+    "debug": "cross-env NODE_ENV=development nodemon --inspect server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
+    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
+    "docker:test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up"
   },
   "repository": {
     "type": "git",
@@ -21,8 +30,18 @@
     "npm": ">=6.0.0"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "config": "^3.3.2",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "winston": "^3.3.3"
+    "helmet": "^4.6.0",
+    "http-status": "^1.5.0",
+    "joi": "^17.4.2",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2",
+    "winston": "^3.3.3",
+    "xss-clean": "^0.1.1"
   }
 }

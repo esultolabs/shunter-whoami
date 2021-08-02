@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+  body
+    h1 Hello world!
+    br
+    h3 I'm Shunter whoami's container
+    br
+    h3 Domain: 
+      span(style='color: gray;')= domain
+    h3= 'Container ID: '
+      span(style='color: gray;')= containerID
+    h3= 'Container IP: '
+      span(style='color: gray;')= containerAddress
+    h3= 'Container port: '
+      span(style='color: gray;')= containerPort
+    br
+    h3= 'Request IP: '
+      span(style='color: gray;')
+        = remoteAddress
+    h3= 'Request port: '
+      span(style='color: gray;')
+        = remotePort
+    br
+    h3= 'Forwarded IP: '
+      if forwardedIP
+        = forwardedIP
+      else
+        | seem you aren't forwarded
